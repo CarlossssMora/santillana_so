@@ -1,0 +1,12 @@
+/* Establece el border box para no perder la medida deseada*/
+html { 
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1rem = 10 px */
+}
+  *, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body{
+    font-family: "Nunito", sans-serif;
+}
