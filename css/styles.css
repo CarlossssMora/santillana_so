@@ -21,11 +21,20 @@ h1, h2, h3{
 a{
     color: #fff;
     text-decoration: none;
+    transition: color .2s ease-out;
+}
+
+a:hover{
+    color:#2929cc;
 }
 
 img{
     max-width: 100%;
     display: block; /* Utilizado para no dejar separación entre las imágenes y los elementos*/
+}
+
+.text-center{
+    text-align: center;
 }
 
 .container{
@@ -61,21 +70,49 @@ img{
 footer{
     background-color: #8c52ff;
     color: #fff;
+    padding: 4rem 0;
 }
 
 .footer-sitio{
     margin-top: 4rem;
-    padding: 4rem 0;
 }
 
 .footer-sitio h3{
     margin-bottom: .5rem;
 }
 
+
 .footer-grid{
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 3fr 2fr 2fr;
     border-bottom: .1rem #e1e1e1 solid ;
+    padding-bottom: 4rem ;    
+}
+
+.info-empresa{
+    display: flex;
+    flex-direction: column;
+    max-width: 40rem;
+}
+
+.nombre-empresa{
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+}
+
+.nombre-empresa img{
+    height: 3.5rem;
+    object-fit: cover;
+}
+
+.logos-redes-sociales{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.recomendacion{
+    font-weight: 900;
+    font-size: 2.2rem;
 }
 
 .footer-menu a{
@@ -83,4 +120,23 @@ footer{
 }
 .footer-contacto p{
     margin: 0 0 .5rem 0;
+}
+
+.copyright{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.powered{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.item-info{
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+}
+.item-info img{
+    height: 3.1rem;
+    object-fit: cover;
 }
