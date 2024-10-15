@@ -9,4 +9,78 @@ html {
 
 body{
     font-family: "Nunito", sans-serif;
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+/* Globales*/
+h1, h2, h3{
+    margin: 0 0 5rem 0;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    display: block; /* Utilizado para no dejar separación entre las imágenes y los elementos*/
+}
+
+.container{
+    max-width: 140rem;
+    margin: 0 auto;
+}
+
+
+/* Barra de navegación*/
+.barra-nav{
+    background-color: #5d30b8;
+}
+
+.barra-grid{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 50rem;
+}
+
+.logo img{
+    height: 7.5rem;
+    object-fit: cover;
+}
+
+.navegacion-principal{
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* Footer */
+footer{
+    background-color: #8c52ff;
+    color: #fff;
+}
+
+.footer-sitio{
+    margin-top: 4rem;
+    padding: 4rem 0;
+}
+
+.footer-sitio h3{
+    margin-bottom: .5rem;
+}
+
+.footer-grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    border-bottom: .1rem #e1e1e1 solid ;
+}
+
+.footer-menu a{
+    display: block;
+}
+.footer-contacto p{
+    margin: 0 0 .5rem 0;
 }
