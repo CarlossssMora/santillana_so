@@ -48,11 +48,11 @@ img{
 
 
 /* Barra de navegación*/
-.barra-nav{
+.barra-back-nav{
     background-color: #5d30b8;
 }
 
-.barra-grid{
+.barra-nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -234,8 +234,8 @@ footer{
 }
 
 .item-info{
-    display: grid;
-    grid-template-columns: 1fr 7fr;
+    display: flex;
+    gap: 2rem;
 }
 .item-info img{
     height: 3.1rem;
