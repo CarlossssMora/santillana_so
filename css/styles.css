@@ -32,9 +32,13 @@ img{
     max-width: 100%;
     display: block; /* Utilizado para no dejar separación entre las imágenes y los elementos*/
 }
-
+/*utilidades*/
 .text-center{
     text-align: center;
+}
+
+.margin{
+    margin: 0 2rem;
 }
 
 .container{
@@ -49,9 +53,10 @@ img{
 }
 
 .barra-grid{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    column-gap: 50rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
 }
 
 .logo img{
@@ -60,11 +65,112 @@ img{
 }
 
 .navegacion-principal{
+    margin: 0 4rem;
     padding: 2rem 0;
+    gap: 3rem;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
+/*Animación de enlaces*/
+.enlace-nav {
+    color: #e1e1e1;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+
+.enlace-nav:focus,
+.enlace-nav:hover {
+    color: #fff;
+}
+
+.enlace-nav:focus:after,
+.enlace-nav:hover:after {
+    width: 100%;
+    left: 0%;
+}
+
+.enlace-nav:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
+
+/* Animación de botón de inicio de sesión */
+
+.sign-up {
+    --primary-color: #8c52ff;
+    --secondary-color: #fff;
+    --hover-color: #2929cc;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+}
+
+.arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+}
+
+.arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+}
+
+.sign-up:hover {
+    background-color: var(--hover-color);
+}
+
+.sign-up:hover .arrow {
+    background: var(--secondary-color);
+}
+
+.sign-up:hover .arrow:before {
+    right: 0;
+}
 
 /* Footer */
 footer{
@@ -106,8 +212,8 @@ footer{
 }
 
 .logos-redes-sociales{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    justify-content: space-around;
 }
 
 .recomendacion{
@@ -123,13 +229,8 @@ footer{
 }
 
 .copyright{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.powered{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .item-info{
