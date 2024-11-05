@@ -1,0 +1,12 @@
+//Importamos el modulo express
+const express= require('express');
+
+//Creamos un enrutador
+const router= express.Router();
+
+//Ruta principal (GET /)
+router.get('/',(req,res)=>{
+    res.json({message: 'Bienvenido a Santillana'});
+});
+
+module.exports = router;
