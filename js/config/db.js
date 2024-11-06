@@ -1,5 +1,6 @@
-mongoose.set('strictQuery', true); // Para mantener el comportamiento actual de Mongoose
 const mongoose = require('mongoose');
+mongoose.set('strictQuery', true); // Para mantener el comportamiento actual de Mongoose
+
 
 // Función para conectar a la base de datos
 const connectDB = (uri) => {
