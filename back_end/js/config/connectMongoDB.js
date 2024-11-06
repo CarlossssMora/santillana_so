@@ -1,4 +1,5 @@
-// Función para conectar a la base de datos
+import mongoose from "mongoose";
+
 const connectMongoDB = async () => {
     try {
         if (!process.env.MONGO_URI) {
@@ -14,6 +15,4 @@ const connectMongoDB = async () => {
 
 // Exportar la función de conexión
 export default connectMongoDB;
-
-
 
