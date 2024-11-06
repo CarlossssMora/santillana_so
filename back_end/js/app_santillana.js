@@ -3,6 +3,7 @@ dotenv.config();
 import express from 'express';
 import connectMongoDB from './config/connectMongoDB.js';
 import cookieParser from 'cookie-parser'; //mantiente la sesion iniciada hasta que decida cerrar
+import inicio from './routes/inicio.js';  
 
 console.log(process.env.MONGO_URI);
 console.log(process.env.PORT);
@@ -13,6 +14,8 @@ const PORT= process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
+
+app.use('/',inicio);
 
 app.listen(PORT,()=>{
     console.log(`Servidor levantado en el puerto ${PORT}`);
