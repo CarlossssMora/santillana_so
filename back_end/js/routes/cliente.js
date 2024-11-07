@@ -1,6 +1,6 @@
 // routes/clientes.js
 import express from 'express';
-import Cliente from '../models/cliente'; // Asegúrate de usar la ruta correcta
+import Cliente from '../models/cliente.js'; // Asegúrate de usar la ruta correcta
 
 const router = express.Router();
 
