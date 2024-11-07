@@ -1,4 +1,3 @@
-// routes/clientes.js
 import express from 'express';
 import Cliente from '../models/cliente.js'; // Asegúrate de usar la ruta correcta
 
@@ -10,7 +9,8 @@ router.post('/cliente/nuevo', async (req, res) => {
         const nuevoCliente = new Cliente(req.body); // req.body contiene los datos del cliente
         const clienteGuardado = await nuevoCliente.save();
         res.status(201).json(clienteGuardado);
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(400).json({ message: error.message });
     }
 });
@@ -20,7 +20,8 @@ router.get('/cliente/lista', async (req, res) => {
     try {
         const clientes = await Cliente.find();
         res.json(clientes);
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
@@ -31,7 +32,8 @@ router.get('/cliente/obtener/:id', async (req, res) => {
         const cliente = await Cliente.findById(req.params.id);
         if (!cliente) return res.status(404).json({ message: "Cliente no encontrado" });
         res.json(cliente);
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
@@ -42,7 +44,8 @@ router.put('/cliente/actualizar/:id', async (req, res) => {
         const clienteActualizado = await Cliente.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!clienteActualizado) return res.status(404).json({ message: "Cliente no encontrado" });
         res.json(clienteActualizado);
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(400).json({ message: error.message });
     }
 });
@@ -53,7 +56,8 @@ router.delete('/cliente/eliminar/:id', async (req, res) => {
         const clienteEliminado = await Cliente.findByIdAndDelete(req.params.id);
         if (!clienteEliminado) return res.status(404).json({ message: "Cliente no encontrado" });
         res.json({ message: "Cliente eliminado" });
-    } catch (error) {
+    } 
+    catch (error) {
         res.status(500).json({ message: error.message });
     }
 });

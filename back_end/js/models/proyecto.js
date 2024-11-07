@@ -3,7 +3,6 @@ const { Schema } = mongoose;
 
 const proyectoSchema = new Schema({
     ClienteID: { type: Schema.Types.ObjectId, ref: 'Cliente', required: true },
-    ProyectoID: { type: String, required: true, unique: true },
     nombre: { type: String, required: true },
     fechainicio: { type: Date, required: true },
     fechafin: { type: Date },
