@@ -5,7 +5,7 @@ import Cliente from '../models/cliente.js'; // Asegúrate de usar la ruta correc
 const router = express.Router();
 
 // Ruta para crear un nuevo cliente
-router.post('/cliente', async (req, res) => {
+router.post('/cliente/nuevo', async (req, res) => {
     try {
         const nuevoCliente = new Cliente(req.body); // req.body contiene los datos del cliente
         const clienteGuardado = await nuevoCliente.save();
@@ -16,7 +16,7 @@ router.post('/cliente', async (req, res) => {
 });
 
 // Ruta para obtener todos los clientes
-router.get('/cliente', async (req, res) => {
+router.get('/cliente/lista', async (req, res) => {
     try {
         const clientes = await Cliente.find();
         res.json(clientes);
@@ -26,7 +26,7 @@ router.get('/cliente', async (req, res) => {
 });
 
 // Ruta para obtener un cliente por su ID
-router.get('/cliente/:id', async (req, res) => {
+router.get('/cliente/obtener/:id', async (req, res) => {
     try {
         const cliente = await Cliente.findById(req.params.id);
         if (!cliente) return res.status(404).json({ message: "Cliente no encontrado" });
@@ -37,7 +37,7 @@ router.get('/cliente/:id', async (req, res) => {
 });
 
 // Ruta para actualizar un cliente
-router.put('/cliente/:id', async (req, res) => {
+router.put('/cliente/actualizar/:id', async (req, res) => {
     try {
         const clienteActualizado = await Cliente.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!clienteActualizado) return res.status(404).json({ message: "Cliente no encontrado" });
@@ -48,7 +48,7 @@ router.put('/cliente/:id', async (req, res) => {
 });
 
 // Ruta para eliminar un cliente
-router.delete('/cliente/:id', async (req, res) => {
+router.delete('/cliente/eliminar/:id', async (req, res) => {
     try {
         const clienteEliminado = await Cliente.findByIdAndDelete(req.params.id);
         if (!clienteEliminado) return res.status(404).json({ message: "Cliente no encontrado" });
