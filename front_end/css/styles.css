@@ -46,10 +46,27 @@ img{
     margin: 0 auto;
 }
 
+.btn{
+    background-color: #8c52ff;
+    display: block;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    padding: 1rem;
+    transition: background-color .3s ease-out;
+    text-align: center;
+    border: none;
+}
+
+.btn:hover{
+    background-color: #5d30b8;
+    cursor: pointer;
+}
 
 /* Barra de navegación*/
 .barra-back-nav{
     background-color: #5d30b8;
+    margin-bottom: 4rem;
 }
 
 .barra-nav{
@@ -240,4 +257,35 @@ footer{
 .item-info img{
     height: 3.1rem;
     object-fit: cover;
+}
+
+/* Formulario */
+.formulario{
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.formulario fieldset{
+    border: .1rem black solid ;
+    margin-bottom: 2rem;
+}
+
+.formulario legend{
+    background-color: #8c52ff;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 900;
+    padding: 1rem;
+    margin-bottom: 4rem;
+}
+
+.campo{
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.campo label{
+    flex-basis: 20rem;
 }
