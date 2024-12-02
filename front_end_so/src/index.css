@@ -1,0 +1,11 @@
+@import './stylesheets/normalize.css';
+
+:root {
+  font-family: "Nunito", sans-serif;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
