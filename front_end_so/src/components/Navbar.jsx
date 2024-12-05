@@ -69,7 +69,7 @@ const Navbar = () => {
             Servicios
           </a>
           <a
-            href="/about_us"
+            href="/sobre_nosotros"
             className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
           >
             Sobre Nosotros
