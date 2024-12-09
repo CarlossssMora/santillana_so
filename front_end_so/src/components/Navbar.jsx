@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // Inicialización del estado
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen((prevState) => !prevState); // Alterna entre true y false
+    setIsOpen((prevState) => !prevState);
   };
 
   return (
@@ -12,22 +13,24 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
         {/* Logo */}
         <div className="logo">
-          <a href="/">
+          <Link to="/">
             <img
               src="/img/santillanasologo_removebg.png"
               alt="Logo de Santillana SO"
               className="h-12 sm:h-16"
             />
-          </a>
+          </Link>
         </div>
 
         {/* Botón Hamburguesa y Botón Iniciar Sesión en Móviles */}
         <div className="flex items-center gap-4 sm:hidden">
           {/* Botón de Iniciar Sesión (Móviles) */}
-          <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
-            Iniciar Sesión
-            <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
-          </button>
+          <Link to="/sesion">
+            <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
+              Iniciar Sesión
+              <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
+            </button>
+          </Link>
           {/* Menú Hamburguesa */}
           <button
             onClick={toggleMenu}
@@ -53,39 +56,41 @@ const Navbar = () => {
         {/* Navegación */}
         <nav
           className={`${
-            isOpen ? "flex" : "hidden"
+            isOpen ? 'flex' : 'hidden'
           } sm:flex sm:items-center sm:gap-8 flex-col sm:flex-row absolute sm:static top-16 left-0 w-full sm:w-auto bg-purple-800 sm:bg-transparent`}
         >
-          <a
-            href="/"
+          <Link
+            to="/"
             className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
           >
             Inicio
-          </a>
-          <a
-            href="/services"
+          </Link>
+          <Link
+            to="/services"
             className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
           >
             Servicios
-          </a>
-          <a
-            href="/sobre_nosotros"
+          </Link>
+          <Link
+            to="/sobre_nosotros"
             className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
           >
             Sobre Nosotros
-          </a>
-          <a
-            href="/contact"
+          </Link>
+          <Link
+            to="/contact"
             className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
           >
             Contacto
-          </a>
+          </Link>
           {/* Botón de Iniciar Sesión (Pantallas Grandes) */}
           <div className="hidden sm:block">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
-              Iniciar Sesión
-              <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
-            </button>
+            <Link to="/inicio_sesion">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
+                Iniciar Sesión
+                <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
+              </button>
+            </Link>
           </div>
         </nav>
       </div>

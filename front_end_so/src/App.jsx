@@ -7,7 +7,8 @@ import AreasEspecializacion from './components/inicio/AreasEspecializacion';
 import PropuestaValor from './components/inicio/PropuestaValor';
 import SeccionHero from './components/inicio/SeccionHero';
 import SobreNos from './components/sobrenosotros/SobreNos';
-import Contact from './components/contacto/Contacto'; // Importa el componente Contact
+import Contact from './components/contacto/Contacto'; 
+import Sesion from './components/inicioSesion/InicioSesion';
 
 const App = () => {
   return (
@@ -31,6 +32,8 @@ const App = () => {
 
         {/* Ruta Contacto */}
         <Route path="/contact" element={<Contact />} />
+        {/* Ruta Inicio Sesion */}
+        <Route path="/inicio_sesion" element={<Sesion />} />
       </Routes>
       <Footer />
     </Router>

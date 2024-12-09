@@ -44,7 +44,7 @@ return (
     <input name="nombre_empresa" placeholder="Nombre de la Empresa" value={formData.nombre_empresa} onChange={handleChange} className="block w-full border p-2 mb-4" required />
     <input name="nombre_representante" placeholder="Nombre del Representante" value={formData.nombre_representante} onChange={handleChange} className="block w-full border p-2 mb-4" required />
     <input name="correo" type="email" placeholder="Correo Electrónico" value={formData.correo} onChange={handleChange} className="block w-full border p-2 mb-4" required />
-    <input name="telefono" placeholder="Teléfono" value={formData.telefono} onChange={handleChange} className="block w-full border p-2 mb-4" />
+    <input name="telefono" placeholder="Teléfono" value={formData.telefono} onChange={handleChange} className="block w-full border p-2 mb-4" required/>
     <select name="pais" value={formData.pais} onChange={handleChange} className="block w-full border p-2 mb-4" required>
         <option value="">- Seleccione País -</option>
         <option value="MX">México</option>
