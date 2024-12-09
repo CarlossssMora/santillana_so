@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ usuario, cerrarSesion }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -24,13 +24,16 @@ const Navbar = () => {
 
         {/* Botón Hamburguesa y Botón Iniciar Sesión en Móviles */}
         <div className="flex items-center gap-4 sm:hidden">
-          {/* Botón de Iniciar Sesión (Móviles) */}
-          <Link to="/sesion">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
-              Iniciar Sesión
-              <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
-            </button>
-          </Link>
+          {usuario ? (
+            <span className="text-white font-semibold">{`Hola, ${usuario}`}</span>
+          ) : (
+            <Link to="/inicio_sesion">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
+                Iniciar Sesión
+                <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
+              </button>
+            </Link>
+          )}
           {/* Menú Hamburguesa */}
           <button
             onClick={toggleMenu}
@@ -83,14 +86,27 @@ const Navbar = () => {
           >
             Contacto
           </Link>
-          {/* Botón de Iniciar Sesión (Pantallas Grandes) */}
+
+          {/* Botón de Iniciar Sesión o Nombre del Usuario */}
           <div className="hidden sm:block">
-            <Link to="/inicio_sesion">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
-                Iniciar Sesión
-                <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
-              </button>
-            </Link>
+            {usuario ? (
+              <div className="flex items-center gap-2">
+                <span className="text-white font-semibold">{`Hola, ${usuario}`}</span>
+                <button
+                  onClick={cerrarSesion}
+                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
+                >
+                  Cerrar Sesión
+                </button>
+              </div>
+            ) : (
+              <Link to="/inicio_sesion">
+                <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
+                  Iniciar Sesión
+                  <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
+                </button>
+              </Link>
+            )}
           </div>
         </nav>
       </div>

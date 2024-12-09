@@ -9,6 +9,7 @@ import SeccionHero from './components/inicio/SeccionHero';
 import SobreNos from './components/sobrenosotros/SobreNos';
 import Contact from './components/contacto/Contacto'; 
 import Sesion from './components/inicioSesion/InicioSesion';
+import Dashboard from './components/dashboard/Dashboard';
 
 const App = () => {
   return (
@@ -34,6 +35,8 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         {/* Ruta Inicio Session */}
         <Route path="/inicio_sesion" element={<Sesion />} />
+        {/* Ruta Dashboard del usuario */}
+        <Route path="/dashboard" element={<Dashboard/>} />
       </Routes>
       <Footer />
     </Router>
@@ -41,4 +44,3 @@ const App = () => {
 };
 
 export default App;
-

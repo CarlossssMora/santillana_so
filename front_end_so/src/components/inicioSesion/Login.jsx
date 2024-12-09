@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ toggleRegister }) => {
   const [formData, setFormData] = useState({
     usuario: '',
     contrasenia: '',
   });
+
+  const navigate = useNavigate(); // Hook para redirigir
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,6 +21,8 @@ const Login = ({ toggleRegister }) => {
       const response = await axios.post('http://localhost:5000/cliente/login', formData);
       console.log('Inicio de sesión exitoso:', response.data);
       alert('¡Inicio de sesión exitoso!');
+      // Redirigir al Dashboard
+      navigate('/dashboard'); // Cambia la ruta a /dashboard
     } catch (error) {
       console.error('Error en inicio de sesión:', error);
       alert('Usuario o contraseña incorrectos.');
@@ -25,7 +30,7 @@ const Login = ({ toggleRegister }) => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white p-12 shadow-2xl rounded-lg mt-20 mb-20">
+    <div className="max-w-4xl mx-auto bg-white p-12 shadow-2xl rounded-lg mt-20 mb-20">
       <h2 className="text-4xl font-bold text-center text-purple-800 mb-8">Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -63,4 +68,3 @@ const Login = ({ toggleRegister }) => {
 };
 
 export default Login;
-
