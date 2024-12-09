@@ -15,7 +15,7 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        {/* Ruta principal */}
+        {/* Ruta principaal */}
         <Route
           path="/"
           element={
@@ -32,7 +32,7 @@ const App = () => {
 
         {/* Ruta Contacto */}
         <Route path="/contact" element={<Contact />} />
-        {/* Ruta Inicio Sesion */}
+        {/* Ruta Inicio Session */}
         <Route path="/inicio_sesion" element={<Sesion />} />
       </Routes>
       <Footer />
