@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import BreveDescripcion from './components/inicio/BreveDescripcion';
@@ -12,11 +12,27 @@ import Sesion from './components/inicioSesion/InicioSesion';
 import Dashboard from './components/dashboard/Dashboard';
 
 const App = () => {
+  const [cliente, setCliente] = useState(null);
+
+  // Cargar cliente desde localStorage al iniciar
+  useEffect(() => {
+    const savedCliente = localStorage.getItem('cliente');
+    if (savedCliente) {
+      setCliente(JSON.parse(savedCliente));
+    }
+  }, []);
+
+  // Función para cerrar sesión
+  const cerrarSesion = () => {
+    localStorage.removeItem('cliente');
+    setCliente(null);
+    alert('Sesión cerrada correctamente');
+  };
+
   return (
     <Router>
-      <Navbar />
+      <Navbar cliente={cliente} cerrarSesion={cerrarSesion} />
       <Routes>
-        {/* Ruta principaal */}
         <Route
           path="/"
           element={
@@ -28,15 +44,20 @@ const App = () => {
             </main>
           }
         />
-        {/* Ruta Sobre Nosotros */}
         <Route path="/sobre_nosotros" element={<SobreNos />} />
-
-        {/* Ruta Contacto */}
         <Route path="/contact" element={<Contact />} />
-        {/* Ruta Inicio Session */}
-        <Route path="/inicio_sesion" element={<Sesion />} />
-        {/* Ruta Dashboard del usuario */}
-        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route
+          path="/inicio_sesion"
+          element={
+            <Sesion
+              setCliente={(clienteData) => {
+                setCliente(clienteData);
+                localStorage.setItem('cliente', JSON.stringify(clienteData));
+              }}
+            />
+          }
+        />
+        <Route path="/dashboard" element={<Dashboard cliente={cliente} />} />
       </Routes>
       <Footer />
     </Router>

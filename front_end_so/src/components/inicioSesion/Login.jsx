@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ toggleRegister }) => {
+const Login = ({ toggleRegister,setCliente }) => {
   const [formData, setFormData] = useState({
     usuario: '',
     contrasenia: '',
@@ -19,15 +19,25 @@ const Login = ({ toggleRegister }) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:5000/cliente/login', formData);
-      console.log('Inicio de sesión exitoso:', response.data);
-      alert('¡Inicio de sesión exitoso!');
+  
+      console.log('Respuesta del servidor:', response.data); // Verifica aquí qué devuelve el backend
+  
+      const cliente = response.data.cliente || response.data; // Maneja ambas estructuras
+  
+      console.log('Inicio de sesión exitoso:', cliente);
+  
+      // Guarda el cliente en localStorage y actualiza el estado global 
+      setCliente(cliente);
+      localStorage.setItem('cliente', JSON.stringify(cliente));
+      
       // Redirigir al Dashboard
-      navigate('/dashboard'); // Cambia la ruta a /dashboard
+      navigate('/dashboard');
     } catch (error) {
       console.error('Error en inicio de sesión:', error);
       alert('Usuario o contraseña incorrectos.');
     }
   };
+  
 
   return (
     <div className="max-w-4xl mx-auto bg-white p-12 shadow-2xl rounded-lg mt-20 mb-20">

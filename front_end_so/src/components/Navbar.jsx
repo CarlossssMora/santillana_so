@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Navbar = ({ usuario, cerrarSesion }) => {
+const Navbar = ({ cliente, cerrarSesion }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate(); // Hook para redirigir
+
+  const handleCerrarSesion = () => {
+    cerrarSesion(); // Limpia localStorage y estado global
+    navigate('/inicio_sesion'); // Redirige a /inicio_sesion
+  };
 
   const toggleMenu = () => {
     setIsOpen((prevState) => !prevState);
@@ -22,10 +28,23 @@ const Navbar = ({ usuario, cerrarSesion }) => {
           </Link>
         </div>
 
-        {/* Botón Hamburguesa y Botón Iniciar Sesión en Móviles */}
+        {/* Botón Hamburguesa y Sesión en Móviles */}
         <div className="flex items-center gap-4 sm:hidden">
-          {usuario ? (
-            <span className="text-white font-semibold">{`Hola, ${usuario}`}</span>
+          {cliente ? (
+            <>
+              <Link
+                to="/dashboard"
+                className="text-white font-semibold cursor-pointer transition-all hover:text-white hover:opacity-100"
+              >
+                {`Hola, ${cliente.nombre}`}
+              </Link>
+              <button
+                onClick={handleCerrarSesion}
+                className="ml-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
+              >
+                Cerrar Sesión
+              </button>
+            </>
           ) : (
             <Link to="/inicio_sesion">
               <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
@@ -34,7 +53,6 @@ const Navbar = ({ usuario, cerrarSesion }) => {
               </button>
             </Link>
           )}
-          {/* Menú Hamburguesa */}
           <button
             onClick={toggleMenu}
             className="text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -46,12 +64,7 @@ const Navbar = ({ usuario, cerrarSesion }) => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
           </button>
         </div>
@@ -87,18 +100,23 @@ const Navbar = ({ usuario, cerrarSesion }) => {
             Contacto
           </Link>
 
-          {/* Botón de Iniciar Sesión o Nombre del Usuario */}
-          <div className="hidden sm:block">
-            {usuario ? (
-              <div className="flex items-center gap-2">
-                <span className="text-white font-semibold">{`Hola, ${usuario}`}</span>
+          {/* Nombre del Cliente y Cerrar Sesión */}
+          <div className="hidden sm:flex items-center gap-6">
+            {cliente ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className="text-gray-200 font-semibold cursor-pointer transition-all hover:text-white hover:opacity-100"
+                >
+                  {`${cliente.nombre}`}
+                </Link>
                 <button
-                  onClick={cerrarSesion}
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
+                  onClick={handleCerrarSesion}
+                  className="ml-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg transition"
                 >
                   Cerrar Sesión
                 </button>
-              </div>
+              </>
             ) : (
               <Link to="/inicio_sesion">
                 <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">

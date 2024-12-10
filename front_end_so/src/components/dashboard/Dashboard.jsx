@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Dashboard = () => {
+const Dashboard = ({ cliente }) => {
   return (
     <div className="max-w-4xl mx-auto text-center mt-20">
-      <h1 className="text-3xl font-bold text-purple-800">¡Bienvenido al Dashboard!</h1>
+      <h1 className="text-3xl font-bold text-purple-800">
+        ¡Bienvenido al Dashboard, {cliente?.nombre}!
+      </h1>
     </div>
   );
 };
