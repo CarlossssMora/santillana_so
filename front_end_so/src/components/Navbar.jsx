@@ -82,7 +82,7 @@ const Navbar = ({ cliente, cerrarSesion }) => {
             Inicio
           </Link>
           <Link
-            to="/services"
+            to="/servicios"
             className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
           >
             Servicios

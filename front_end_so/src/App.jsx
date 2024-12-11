@@ -6,6 +6,7 @@ import BreveDescripcion from './components/inicio/BreveDescripcion';
 import AreasEspecializacion from './components/inicio/AreasEspecializacion';
 import PropuestaValor from './components/inicio/PropuestaValor';
 import SeccionHero from './components/inicio/SeccionHero';
+import SeccionServicios from './components/Servicios/SeccionServicios';
 import SobreNos from './components/sobrenosotros/SobreNos';
 import Contact from './components/contacto/Contacto'; 
 import Sesion from './components/inicioSesion/InicioSesion';
@@ -44,6 +45,7 @@ const App = () => {
             </main>
           }
         />
+        <Route path='/servicios' element={<SeccionServicios/>}/>
         <Route path="/sobre_nosotros" element={<SobreNos />} />
         <Route path="/contact" element={<Contact />} />
         <Route
