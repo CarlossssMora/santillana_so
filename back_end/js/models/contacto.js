@@ -5,7 +5,7 @@ const contactoSchema = new Schema({
     nombre_representante: { type: String, required: true },
     nombre_empresa: { type: String, required: true },
     correo: { type: String, required: true },
-    telefono: { type: String },
+    telefono: { type: String, required:true },
     pais: { type: String, required: true },
     fecha_cita: { type: Date, required: true },
 });

@@ -62,4 +62,30 @@ router.delete('/cliente/eliminar/:id', async (req, res) => {
     }
 });
 
+
+
+router.post('/cliente/login', async (req, res) => {
+  const { correo, contrasenia } = req.body;
+
+  try {
+    // Busca al cliente con el usuario y contraseña
+    const cliente = await Cliente.findOne({ correo });
+
+    if (!cliente) {
+      return res.status(400).json({ message: 'Usuario incorrecto' });
+    }
+
+    // Compara la contraseña enviada con la del cliente (sin encriptar)
+    if (cliente.contrasenia !== contrasenia) {
+      return res.status(400).json({ message: 'Contraseña incorrecta' });
+    }
+
+    // Envía el cliente como respuesta
+    res.status(200).json({ message: 'Inicio de sesión exitoso', cliente });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
 export default router;

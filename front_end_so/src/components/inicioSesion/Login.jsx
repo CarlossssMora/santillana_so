@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = ({ toggleRegister,setCliente }) => {
   const [formData, setFormData] = useState({
-    usuario: '',
+    correo: '',
     contrasenia: '',
   });
 
@@ -44,9 +44,9 @@ const Login = ({ toggleRegister,setCliente }) => {
       <h2 className="text-4xl font-bold text-center text-purple-800 mb-8">Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <input
-          name="usuario"
-          placeholder="Nombre de Usuario"
-          value={formData.usuario}
+          name="correo"
+          placeholder="Correo"
+          value={formData.correo}
           onChange={handleChange}
           className="block w-full border p-4 mb-8 text-lg rounded-lg"
           required

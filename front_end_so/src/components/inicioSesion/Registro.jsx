@@ -6,8 +6,10 @@ const Registro = ({ toggleLogin }) => {
     nombre: '',
     usuario: '',
     correo: '',
+    nombreCompania: '',
     contrasenia: '',
-    regimenFiscal: '',
+    confirmarContrasenia: '', // Nuevo estado para confirmar contraseña
+    razonSocial: '',
     RFC: '',
     direccion: '',
     telefono: '',
@@ -20,14 +22,19 @@ const Registro = ({ toggleLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData.contrasenia !== formData.confirmarContrasenia) {
+      alert('Las contraseñas no coinciden. Por favor, verifica.');
+      return;
+    }
     try {
-      const response = await axios.post('http://localhost:5000/cliente/nuevo', formData);
+      const { confirmarContrasenia, ...dataToSend } = formData; 
+      const response = await axios.post('http://localhost:5000/cliente/nuevo', dataToSend);
       console.log('Registro exitoso:', response.data);
       alert('¡Registro exitoso!');
       toggleLogin();
     } catch (error) {
       console.error('Error en el registro:', error);
-      alert('El correo o RFC ya existen. Intenta con otros datos.');
+      alert('El correo o nombre de usuario ya existen. Intenta con otros datos.');
     }
   };
 
@@ -58,6 +65,13 @@ const Registro = ({ toggleLogin }) => {
           required
         />
         <input
+          name="nombreCompania"
+          placeholder="Nombre de Compañía"
+          onChange={handleChange}
+          className="block w-full border p-4 mb-6 text-lg rounded-lg"
+          required
+        />
+        <input
           name="contrasenia"
           type="password"
           placeholder="Contraseña"
@@ -66,8 +80,16 @@ const Registro = ({ toggleLogin }) => {
           required
         />
         <input
-          name="regimenFiscal"
-          placeholder="Régimen Fiscal"
+          name="confirmarContrasenia" // Nuevo campo
+          type="password"
+          placeholder="Confirmar Contraseña"
+          onChange={handleChange}
+          className="block w-full border p-4 mb-6 text-lg rounded-lg"
+          required
+        />
+        <input
+          name="razonSocial"
+          placeholder="Razón Social"
           onChange={handleChange}
           className="block w-full border p-4 mb-6 text-lg rounded-lg"
         />
