@@ -1,6 +1,8 @@
 import Servicios from "./OfertaServicios/Servicios";
 import HeroServicios from "./HeroServicios";
 import IndustriasServimos from "./IndustriasServimos";
+import EstudioCaso from "./EstudioCaso";
+import ProgramasCapacitacion from "./ProgramasCapacitacion";
 
 const SeccionServicios = () => {
     return(
@@ -8,9 +10,9 @@ const SeccionServicios = () => {
             <HeroServicios />
             <Servicios />
             <IndustriasServimos />
-            {/* Sección 5*/}
+            <EstudioCaso />
             {/* Sección 6 */}
-            {/* Sección 7 */}
+            <ProgramasCapacitacion />
         </div>
     );
 };
