@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Navbar = ({ cliente, cerrarSesion }) => {
+const Navbar = ({ cliente, admin, cerrarSesion, cerrarSesionAdmin }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate(); // Hook para redirigir
 
-  const handleCerrarSesion = () => {
-    cerrarSesion(); // Limpia localStorage y estado global
+  // Funciones para cerrar sesión
+  const handleCerrarSesionCliente = () => {
+    cerrarSesion();
+    navigate('/inicio_sesion'); // Redirige a /inicio_sesion
+  };
+
+  const handleCerrarSesionAdmin = () => {
+    cerrarSesionAdmin();
     navigate('/inicio_sesion'); // Redirige a /inicio_sesion
   };
 
@@ -30,7 +36,22 @@ const Navbar = ({ cliente, cerrarSesion }) => {
 
         {/* Botón Hamburguesa y Sesión en Móviles */}
         <div className="flex items-center gap-4 sm:hidden">
-          {cliente ? (
+          {admin ? (
+            <>
+              <Link
+                to="/administrador"
+                className="text-white font-semibold cursor-pointer transition-all hover:text-white hover:opacity-100"
+              >
+                {`Hola, Admin`}
+              </Link>
+              <button
+                onClick={handleCerrarSesionAdmin}
+                className="ml-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
+              >
+                Cerrar Sesión
+              </button>
+            </>
+          ) : cliente ? (
             <>
               <Link
                 to="/dashboard"
@@ -39,7 +60,7 @@ const Navbar = ({ cliente, cerrarSesion }) => {
                 {`Hola, ${cliente.nombre}`}
               </Link>
               <button
-                onClick={handleCerrarSesion}
+                onClick={handleCerrarSesionCliente}
                 className="ml-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
               >
                 Cerrar Sesión
@@ -49,7 +70,6 @@ const Navbar = ({ cliente, cerrarSesion }) => {
             <Link to="/inicio_sesion">
               <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
                 Iniciar Sesión
-                <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
               </button>
             </Link>
           )}
@@ -75,53 +95,49 @@ const Navbar = ({ cliente, cerrarSesion }) => {
             isOpen ? 'flex' : 'hidden'
           } sm:flex sm:items-center sm:gap-8 flex-col sm:flex-row absolute sm:static top-16 left-0 w-full sm:w-auto bg-purple-800 sm:bg-transparent`}
         >
-          <Link
-            to="/"
-            className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
-          >
+          <Link to="/" className="block text-gray-200 hover:text-white transition px-4 py-2 text-center">
             Inicio
           </Link>
-          <Link
-            to="/servicios"
-            className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
-          >
+          <Link to="/servicios" className="block text-gray-200 hover:text-white transition px-4 py-2 text-center">
             Servicios
           </Link>
-          <Link
-            to="/sobre_nosotros"
-            className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
-          >
+          <Link to="/sobre_nosotros" className="block text-gray-200 hover:text-white transition px-4 py-2 text-center">
             Sobre Nosotros
           </Link>
-          <Link
-            to="/contact"
-            className="block text-gray-200 hover:text-white transition px-4 py-2 text-center"
-          >
+          <Link to="/contact" className="block text-gray-200 hover:text-white transition px-4 py-2 text-center">
             Contacto
           </Link>
 
-          {/* Nombre del Cliente y Cerrar Sesión */}
+          {/* Admin o Cliente */}
           <div className="hidden sm:flex items-center gap-6">
-            {cliente ? (
+            {admin ? (
               <>
-                <Link
-                  to="/dashboard"
-                  className="text-gray-200 font-semibold cursor-pointer transition-all hover:text-white hover:opacity-100"
+                <Link to="/administrador" className="text-gray-200 font-semibold">
+                  {`${admin.nombre}`}
+                </Link>
+                <button
+                  onClick={handleCerrarSesionAdmin}
+                  className="ml-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
                 >
+                  Cerrar Sesión
+                </button>
+              </>
+            ) : cliente ? (
+              <>
+                <Link to="/dashboard" className="text-gray-200 font-semibold">
                   {`${cliente.nombre}`}
                 </Link>
                 <button
-                  onClick={handleCerrarSesion}
-                  className="ml-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 sm:px-4 sm:py-2 text-sm sm:text-base rounded-lg transition"
+                  onClick={handleCerrarSesionCliente}
+                  className="ml-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
                 >
                   Cerrar Sesión
                 </button>
               </>
             ) : (
               <Link to="/inicio_sesion">
-                <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
+                <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition">
                   Iniciar Sesión
-                  <span className="w-4 h-4 inline-block border-t-2 border-r-2 border-white rotate-45 transform ml-2"></span>
                 </button>
               </Link>
             )}

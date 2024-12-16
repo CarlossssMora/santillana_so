@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ toggleRegister,setCliente }) => {
+const Login = ({ toggleRegister,toggleLoginAdmin,setCliente }) => {
   const [formData, setFormData] = useState({
     correo: '',
     contrasenia: '',
@@ -72,6 +72,12 @@ const Login = ({ toggleRegister,setCliente }) => {
         className="mt-8 text-purple-600 hover:text-purple-800 transition block text-center text-lg"
       >
         ¿Eres nuevo? <span className="font-semibold underline">Regístrate aquí</span>
+      </button>
+      <button
+        onClick={toggleLoginAdmin}
+        className="mt-8 text-purple-600 hover:text-purple-800 transition block text-center text-lg"
+      >
+        ¿Eres admin? <span className="font-semibold underline">Inicia Sesion aquí</span>
       </button>
     </div>
   );

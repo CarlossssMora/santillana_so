@@ -48,6 +48,7 @@ return (
     <select name="pais" value={formData.pais} onChange={handleChange} className="block w-full border p-2 mb-4" required>
         <option value="">- Seleccione País -</option>
         <option value="MX">México</option>
+        <option value="EEUU">Estados Unidos</option>
         <option value="PR">Perú</option>
         <option value="CO">Colombia</option>
         <option value="AR">Argentina</option>
