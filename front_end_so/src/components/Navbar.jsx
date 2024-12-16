@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa'; // Importa el ícono de usuario
 
-const Navbar = ({ cliente, cerrarSesion }) => {
+const Navbar = ({ cliente, admin, cerrarSesion, cerrarSesionAdmin }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate(); // Hook para redirigir
 
-  const handleCerrarSesion = () => {
-    cerrarSesion(); // Limpia localStorage y estado global
+  const handleCerrarSesionCliente = () => {
+    cerrarSesion(); // Limpia localStorage y estado global del cliente
+    navigate('/inicio_sesion'); // Redirige a /inicio_sesion
+  };
+
+  const handleCerrarSesionAdmin = () => {
+    cerrarSesionAdmin(); // Limpia localStorage y estado global del admin
     navigate('/inicio_sesion'); // Redirige a /inicio_sesion
   };
 
@@ -32,11 +37,13 @@ const Navbar = ({ cliente, cerrarSesion }) => {
         {/* Botón Hamburguesa y Sesión en Móviles */}
         <div className="flex items-center gap-4 sm:hidden">
           {cliente ? (
-            <>
-              <Link to="/menu_usuario" className="text-white">
-                <FaUserCircle className="text-3xl cursor-pointer" />
-              </Link>
-            </>
+            <Link to="/menu_usuario" className="text-white">
+              <FaUserCircle className="text-3xl cursor-pointer" />
+            </Link>
+          ) : admin ? (
+            <Link to="/administrador" className="text-white">
+              <FaUserCircle className="text-3xl cursor-pointer" />
+            </Link>
           ) : (
             <Link to="/inicio_sesion">
               <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition flex items-center">
@@ -97,13 +104,31 @@ const Navbar = ({ cliente, cerrarSesion }) => {
             Contacto
           </Link>
 
-          {/* Ícono del Usuario */}
+          {/* Sesión del cliente o admin */}
           <div className="hidden sm:flex items-center gap-6">
             {cliente ? (
               <>
                 <Link to="/menu_usuario" className="text-white">
                   <FaUserCircle className="text-3xl cursor-pointer" />
                 </Link>
+                <button
+                  onClick={handleCerrarSesionCliente}
+                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
+                >
+                  Cerrar Sesión
+                </button>
+              </>
+            ) : admin ? (
+              <>
+                <Link to="/administrador" className="text-white">
+                  <FaUserCircle className="text-3xl cursor-pointer" />
+                </Link>
+                <button
+                  onClick={handleCerrarSesionAdmin}
+                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition"
+                >
+                  Cerrar Sesión
+                </button>
               </>
             ) : (
               <Link to="/inicio_sesion">

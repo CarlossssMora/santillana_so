@@ -68,14 +68,13 @@ router.post('/cliente/login', async (req, res) => {
   const { correo, contrasenia } = req.body;
 
   try {
-    // Busca al cliente con el usuario y contraseña
     const cliente = await Cliente.findOne({ correo });
 
     if (!cliente) {
       return res.status(400).json({ message: 'Usuario incorrecto' });
     }
 
-    // Compara la contraseña enviada con la del cliente (sin encriptar)
+    // Compara la contraseña enviada con la del cliente 
     if (cliente.contrasenia !== contrasenia) {
       return res.status(400).json({ message: 'Contraseña incorrecta' });
     }

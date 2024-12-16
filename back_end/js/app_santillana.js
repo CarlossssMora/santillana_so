@@ -11,7 +11,7 @@ import cors from 'cors';
 import cliente from './routes/cliente.js';  
 import proyecto from './routes/proyecto.js';
 import contacto from './routes/contacto.js';
-
+import admin from './routes/admin.js';
 
 dotenv.config();//Utilizar dotenv para llamar las constantes del archivo .env
 
@@ -28,6 +28,7 @@ app.use(cors());// Permite que tu servidor acepte solicitudes desde otros domini
 app.use('/',cliente);
 app.use('/',proyecto);
 app.use('/',contacto);
+app.use('/',admin);
 
 
 
