@@ -5,9 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start":"node app_santillana.js",
+    "start": "node app_santillana.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Miguel Flores, Juan Flores, Samuel Soriano, Franco Campo",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }

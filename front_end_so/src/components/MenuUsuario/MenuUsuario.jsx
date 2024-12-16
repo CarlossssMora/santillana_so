@@ -21,6 +21,7 @@ const MenuUsuario = ({ cliente, handleCerrarSesion }) => {
 
         {/* Opciones */}
         <div className="flex-1 p-8 flex flex-col items-start gap-6">
+        {/* Ver proyectos del cliente */}
         <Link
             to="/ver-proyectos"
             className="flex items-center gap-4 text-gray-700 hover:text-purple-600 hover:bg-gray-200 rounded-lg px-6 py-3 transition w-full"
