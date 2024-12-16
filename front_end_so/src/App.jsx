@@ -12,7 +12,7 @@ import Contact from './components/contacto/Contacto';
 import Sesion from './components/inicioSesion/InicioSesion';
 import Dashboard from './components/dashboard/Dashboard';
 import Administrador from './components/administrador/Administrador';
-
+//
 const App = () => {
   const [cliente, setCliente] = useState(null);
   const [admin, setAdmin] = useState(null); // Estado para el admin
