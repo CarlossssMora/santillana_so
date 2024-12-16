@@ -31,7 +31,7 @@ const Login = ({ toggleRegister,toggleLoginAdmin,setCliente }) => {
       localStorage.setItem('cliente', JSON.stringify(cliente));
       
       // Redirigir al Dashboard
-      navigate('/dashboard');
+      navigate('/menu_usuario');
     } catch (error) {
       console.error('Error en inicio de sesión:', error);
       alert('Usuario o contraseña incorrectos.');

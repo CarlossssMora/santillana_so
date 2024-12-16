@@ -12,6 +12,7 @@ import Contact from './components/contacto/Contacto';
 import Sesion from './components/inicioSesion/InicioSesion';
 import Dashboard from './components/dashboard/Dashboard';
 import Administrador from './components/administrador/Administrador';
+import MenuUsuario from './components/MenuUsuario/MenuUsuario';
 //
 const App = () => {
   const [cliente, setCliente] = useState(null);
@@ -83,6 +84,7 @@ const App = () => {
             />
           }
         />
+        <Route path='/menu_usuario' element={<MenuUsuario cliente={cliente} handleCerrarSesion={cerrarSesion}/>}/>
         <Route path="/dashboard" element={<Dashboard cliente={cliente} />} />
         <Route path="/administrador" element={<Administrador administrador={admin} />} />
       </Routes>
