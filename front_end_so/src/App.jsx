@@ -13,6 +13,7 @@ import Sesion from './components/inicioSesion/InicioSesion';
 import Dashboard from './components/dashboard/Dashboard';
 import Administrador from './components/administrador/Administrador';
 import MenuUsuario from './components/MenuUsuario/MenuUsuario';
+import ConfigurarPerfil from './components/MenuUsuario/ConfigurarPerfil';
 //
 const App = () => {
   const [cliente, setCliente] = useState(null);
@@ -44,6 +45,16 @@ const App = () => {
     localStorage.removeItem('admin');
     setAdmin(null);
     alert('Sesión del administrador cerrada correctamente');
+  };
+
+  //Función para actualizar datos
+  const actualizarPerfil = (nuevosDatos) => {
+    setCliente((prevCliente) => {
+      const clienteActualizado = { ...prevCliente, ...nuevosDatos };
+      localStorage.setItem('cliente', JSON.stringify(clienteActualizado));
+      return clienteActualizado;
+    });
+    alert('Perfil actualizado correctamente');
   };
 
   return (
@@ -85,6 +96,7 @@ const App = () => {
           }
         />
         <Route path='/menu_usuario' element={<MenuUsuario cliente={cliente} handleCerrarSesion={cerrarSesion}/>}/>
+        <Route path='configurar_perfil' element={<ConfigurarPerfil cliente={cliente} actualizarPerfil={actualizarPerfil}/>}/>
         <Route path="/dashboard" element={<Dashboard cliente={cliente} />} />
         <Route path="/administrador" element={<Administrador administrador={admin} />} />
       </Routes>
