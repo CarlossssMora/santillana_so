@@ -5,18 +5,18 @@ import Footer from './components/Footer';
 import BreveDescripcion from './components/inicio/BreveDescripcion';
 import AreasEspecializacion from './components/inicio/AreasEspecializacion';
 import PropuestaValor from './components/inicio/PropuestaValor';
-import SeccionHero from './components/sobrenosotros/SeccionHero';
+import SeccionHero from './components/SobreNosotros/SeccionHero';
 import SeccionServicios from './components/Servicios/SeccionServicios';
-import SobreNos from './components/sobrenosotros/SobreNos';
+import SobreNos from './components/SobreNosotros/SobreNos';
 import Contact from './components/contacto/Contacto';
 import Sesion from './components/inicioSesion/InicioSesion';
 import Dashboard from './components/dashboard/Dashboard';
 import Administrador from './components/administrador/Administrador';
 import MenuUsuario from './components/MenuUsuario/MenuUsuario';
 import ConfigurarPerfil from './components/MenuUsuario/ConfigurarPerfil';
-import MisionEmpresa from './components/sobrenosotros/MisionEmpresa';
-import NuestroEnfoque from './components/sobrenosotros/NuestroEnfoque';
-import NuestroEquipo from './components/sobrenosotros/NuestroEquipo';
+import MisionEmpresa from './components/SobreNosotros/MisionEmpresa';
+import NuestroEnfoque from './components/SobreNosotros/NuestroEnfoque';
+import NuestroEquipo from './components/SobreNosotros/NuestroEquipo';
 import VerProyectos from './components/MenuUsuario/VerProyectos';
 
 const ScrollToSection = () => {
