@@ -13,6 +13,6 @@ const connectMongoDB = async () => {
     }
 };
 
-// Exportar la función de conexión
+// Exportar la función de conexiónn
 export default connectMongoDB;
 

@@ -50,7 +50,7 @@ router.put('/proyecto/actualizar/:id', async (req, res) => {
     }
 });
 
-// Ruta para eliminar un cliente
+// Ruta para eliminar un proyecto
 router.delete('/proyecto/eliminar/:id', async (req, res) => {
     try {
         const proyectoEliminado = await Proyecto.findByIdAndDelete(req.params.id);
@@ -61,5 +61,22 @@ router.delete('/proyecto/eliminar/:id', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+// Ruta para obtener proyectos asociados a un ClienteID
+router.get('/proyecto/cliente/:ClienteID', async (req, res) => {
+    const { ClienteID } = req.params;
+    try {
+        const proyectos = await Proyecto.find({ ClienteID });
+        if (!proyectos.length) {
+            return res.status(404).json({ message: 'No se encontraron proyectos asociados.' });
+        }
+        res.status(200).json(proyectos);
+    } 
+    catch (error) {
+        console.error('Error al obtener proyectos:', error);
+        res.status(500).json({ message: 'Error al obtener proyectos.' });
+    }
+});
+
 
 export default router;
