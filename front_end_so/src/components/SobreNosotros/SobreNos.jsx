@@ -6,11 +6,19 @@ import NuestroEnfoque from './NuestroEnfoque';
 
 const SobreNos = () => {
   return (
-    <div>
-      <SeccionHero />
-      <MisionEmpresa />
-      <NuestroEquipo />
-      <NuestroEnfoque />
+    <div className="sobre-nosotros-container">
+      <SeccionHero/>
+      <section id="mision">
+        <MisionEmpresa />
+      </section>
+
+      <section id="equipo">
+        <NuestroEquipo />
+      </section>
+
+      <section id="enfoque">
+        <NuestroEnfoque />
+      </section>
     </div>
   );
 };

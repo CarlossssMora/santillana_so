@@ -1,10 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import SocialIcons from './SocialIcons';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleScrollToSection = (sectionId) => {
+    navigate('/sobre_nosotros', { state: { targetSection: sectionId } });
+  };
+
   return (
     <footer className="bg-purple-800 text-white py-8">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 gap-8 md:grid-cols-3">
+        
         {/* Información de la Empresa */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <div className="flex items-center gap-4">
@@ -27,18 +35,24 @@ const Footer = () => {
         <div className="text-center md:text-left">
           <h3 className="text-lg font-bold mb-4">Sobre Nosotros</h3>
           <nav className="space-y-2">
-            <a href="#" className="block hover:underline">
-              Valores
-            </a>
-            <a href="#" className="block hover:underline">
-              Misión
-            </a>
-            <a href="#" className="block hover:underline">
-              Visión
-            </a>
-            <a href="#" className="block hover:underline">
-              Compañía y cobertura
-            </a>
+            <button
+              onClick={() => handleScrollToSection('mision')}
+              className="block hover:underline"
+            >
+              Misión de la Empresa
+            </button>
+            <button
+              onClick={() => handleScrollToSection('equipo')}
+              className="block hover:underline"
+            >
+              Nuestro Equipo
+            </button>
+            <button
+              onClick={() => handleScrollToSection('enfoque')}
+              className="block hover:underline"
+            >
+              Nuestro Enfoque
+            </button>
           </nav>
         </div>
 
