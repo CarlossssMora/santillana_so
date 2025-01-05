@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import BreveDescripcion from './components/inicio/BreveDescripcion';
 import AreasEspecializacion from './components/inicio/AreasEspecializacion';
 import PropuestaValor from './components/inicio/PropuestaValor';
-import SeccionHero from './components/sobrenosotros/SeccionHero';
+import SeccionHero from './components/inicio/SeccionHero';
 import SeccionServicios from './components/Servicios/SeccionServicios';
 import SobreNos from './components/sobrenosotros/SobreNos';
 import Contact from './components/contacto/Contacto';
