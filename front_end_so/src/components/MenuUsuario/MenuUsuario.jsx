@@ -1,8 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { FaUserCircle, FaCog, FaFolder, FaSignOutAlt } from 'react-icons/fa';
 
 const MenuUsuario = ({ cliente, handleCerrarSesion }) => {
+  // Redirige al inicio de sesión si cliente es null
+  if (!cliente) {
+    return <Navigate to="/inicio_sesion" replace />;
+  }
+
   return (
     <div className="w-screen flex items-center justify-center bg-gray-200">
       <div className="bg-gray-100 shadow-2xl rounded-lg overflow-hidden w-full max-w-5xl h-auto flex flex-col my-8">
@@ -13,7 +18,7 @@ const MenuUsuario = ({ cliente, handleCerrarSesion }) => {
 
         <div className="flex-1 p-8 flex flex-col items-start gap-6">
           <Link
-            to="/ver-proyectos" // Redirige al nuevo dashboard
+            to="/ver-proyectos"
             className="flex items-center gap-4 text-gray-700 hover:text-purple-600 hover:bg-gray-200 rounded-lg px-6 py-3 transition w-full"
           >
             <FaFolder className="text-2xl" />

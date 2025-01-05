@@ -24,9 +24,6 @@ import ActualizarProyecto from './components/MenuAdministrador/ActualizarProyect
 import Clientes from './components/MenuAdministrador/Clientes';
 
 
-
-
-
 const ScrollToSection = () => {
   const location = useLocation();
 
