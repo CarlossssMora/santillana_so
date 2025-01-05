@@ -5,19 +5,27 @@ import Footer from './components/Footer';
 import BreveDescripcion from './components/inicio/BreveDescripcion';
 import AreasEspecializacion from './components/inicio/AreasEspecializacion';
 import PropuestaValor from './components/inicio/PropuestaValor';
-import SeccionHero from './components/SobreNosotros/SeccionHero';
+import SeccionHero from './components/sobrenosotros/SeccionHero';
 import SeccionServicios from './components/Servicios/SeccionServicios';
-import SobreNos from './components/SobreNosotros/SobreNos';
+import SobreNos from './components/sobrenosotros/SobreNos';
 import Contact from './components/contacto/Contacto';
 import Sesion from './components/inicioSesion/InicioSesion';
 import Dashboard from './components/dashboard/Dashboard';
-import Administrador from './components/administrador/Administrador';
 import MenuUsuario from './components/MenuUsuario/MenuUsuario';
 import ConfigurarPerfil from './components/MenuUsuario/ConfigurarPerfil';
-import MisionEmpresa from './components/SobreNosotros/MisionEmpresa';
-import NuestroEnfoque from './components/SobreNosotros/NuestroEnfoque';
-import NuestroEquipo from './components/SobreNosotros/NuestroEquipo';
+import MisionEmpresa from './components/sobrenosotros/MisionEmpresa';
+import NuestroEnfoque from './components/sobrenosotros/NuestroEnfoque';
+import NuestroEquipo from './components/sobrenosotros/NuestroEquipo';
 import VerProyectos from './components/MenuUsuario/VerProyectos';
+import MenuAdministrador from "./components/MenuAdministrador/MenuAdministrador";
+import ConfigurarPerfilAdmin from './components/MenuAdministrador/ConfigurarPerfilAdmin';
+import CrearProyecto from './components/MenuAdministrador/CrearProyecto';
+import ActualizarProyecto from './components/MenuAdministrador/ActualizarProyecto';
+import Clientes from './components/MenuAdministrador/Clientes';
+
+
+
+
 
 const ScrollToSection = () => {
   const location = useLocation();
@@ -73,6 +81,15 @@ const App = () => {
     });
     alert('Perfil actualizado correctamente');
   };
+
+  const actualizarPerfilAdmin = (nuevosDatos) => {
+    setAdmin((prevAdmin) => {
+      const adminActualizado = { ...prevAdmin, ...nuevosDatos };
+      localStorage.setItem('admin', JSON.stringify(adminActualizado));
+      return adminActualizado;
+    });
+  };
+  
 
   return (
     <Router>
@@ -131,8 +148,15 @@ const App = () => {
         <Route path="/menu_usuario" element={<MenuUsuario cliente={cliente} handleCerrarSesion={cerrarSesion} />} />
         <Route path="/configurar_perfil" element={<ConfigurarPerfil cliente={cliente} actualizarPerfil={actualizarPerfil} />} />
         <Route path="/dashboard" element={<Dashboard cliente={cliente} />} />
-        <Route path="/administrador" element={<Administrador administrador={admin} />} />
+        <Route path="/administrador" element={<MenuAdministrador administrador={admin} handleCerrarSesion={cerrarSesionAdmin} />} />
         <Route path="/ver-proyectos" element={<VerProyectos cliente={cliente} />} />
+        <Route path="/clientes" element={<Clientes />} />
+        <Route path="/configurar_perfil_admin" element={<ConfigurarPerfilAdmin administrador={admin} actualizarPerfilAdmin={actualizarPerfilAdmin} />} />
+        <Route path="/crear_proyecto" element={<CrearProyecto />} />
+        <Route path="/actualizar_proyecto" element={<ActualizarProyecto />} />
+
+
+
       </Routes>
       <Footer />
     </Router>
