@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaUserCircle, FaCog, FaPlusSquare, FaEdit, FaSignOutAlt, FaUsers } from 'react-icons/fa';
+import { FaUserCircle, FaCog, FaPlusSquare, FaEdit, FaSignOutAlt, FaUsers, FaCalendarAlt } from 'react-icons/fa';
 
 const MenuAdministrador = ({ administrador, handleCerrarSesion }) => {
   const navigate = useNavigate();
@@ -55,6 +55,15 @@ const MenuAdministrador = ({ administrador, handleCerrarSesion }) => {
           >
             <FaEdit className="text-2xl" />
             <span className="text-lg">Actualizar Proyecto</span>
+          </Link>
+
+          {/* Citas */}
+          <Link
+            to="/citas"
+            className="flex items-center gap-4 text-gray-700 hover:text-purple-600 hover:bg-gray-200 rounded-lg px-6 py-3 transition w-full"
+          >
+            <FaCalendarAlt className="text-2xl" />
+            <span className="text-lg">Citas</span>
           </Link>
         </div>
 

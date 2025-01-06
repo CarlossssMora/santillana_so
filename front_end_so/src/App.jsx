@@ -11,17 +11,20 @@ import SobreNos from './components/sobrenosotros/SobreNos';
 import Contact from './components/contacto/Contacto';
 import Sesion from './components/inicioSesion/InicioSesion';
 import Dashboard from './components/dashboard/Dashboard';
+import MenuAdministrador from './components/MenuAdministrador/MenuAdministrador';
 import MenuUsuario from './components/MenuUsuario/MenuUsuario';
 import ConfigurarPerfil from './components/MenuUsuario/ConfigurarPerfil';
 import MisionEmpresa from './components/sobrenosotros/MisionEmpresa';
 import NuestroEnfoque from './components/sobrenosotros/NuestroEnfoque';
 import NuestroEquipo from './components/sobrenosotros/NuestroEquipo';
 import VerProyectos from './components/MenuUsuario/VerProyectos';
-import MenuAdministrador from "./components/MenuAdministrador/MenuAdministrador";
 import ConfigurarPerfilAdmin from './components/MenuAdministrador/ConfigurarPerfilAdmin';
 import CrearProyecto from './components/MenuAdministrador/CrearProyecto';
 import ActualizarProyecto from './components/MenuAdministrador/ActualizarProyecto';
 import Clientes from './components/MenuAdministrador/Clientes';
+import Citas from './components/MenuAdministrador/Citas';
+
+
 
 
 const ScrollToSection = () => {
@@ -151,6 +154,7 @@ const App = () => {
         <Route path="/configurar_perfil_admin" element={<ConfigurarPerfilAdmin administrador={admin} actualizarPerfilAdmin={actualizarPerfilAdmin} />} />
         <Route path="/crear_proyecto" element={<CrearProyecto />} />
         <Route path="/actualizar_proyecto" element={<ActualizarProyecto />} />
+        <Route path="/citas" element={<Citas />} />
 
 
 
